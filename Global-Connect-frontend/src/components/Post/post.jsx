@@ -82,7 +82,9 @@ const Post = ({ profile, item, personalData, onRepost }) => {
         }
 
         try {
-            const response = await axios.post(`http://localhost:4000/api/comment`, 
+            // const response = await axios.post(`http://localhost:4000/api/comment`, 
+            const response = await axios.post(`https://global-connect-05.onrender.com
+/api/comment`, 
                 { postId: item._id, comment: commentText },
                 { withCredentials: true }
             );
@@ -100,7 +102,7 @@ const Post = ({ profile, item, personalData, onRepost }) => {
 
     const handleLikeFunc = async () => {
         try {
-            await axios.post('http://localhost:4000/api/post/likeDislike', 
+            await axios.post('https://global-connect-05.onrender.com/api/post/likeDislike', 
                 { postId: item._id }, 
                 { withCredentials: true }
             );
@@ -126,7 +128,7 @@ const Post = ({ profile, item, personalData, onRepost }) => {
                 return;
             }
             
-            const response = await axios.post('http://localhost:4000/api/post/repost', 
+            const response = await axios.post('https://global-connect-05.onrender.com/api/post/repost', 
                 { postId: item._id, repostType: 'direct' }, 
                 { withCredentials: true }
             );
@@ -173,7 +175,7 @@ const Post = ({ profile, item, personalData, onRepost }) => {
         if (!comment) {
             setComment(true);
             try {
-                const response = await axios.get(`http://localhost:4000/api/comment/${item._id}`);
+                const response = await axios.get(`https://global-connect-05.onrender.com/api/comment/${item._id}`);
                 setComments(response.data.comments || []);
             } catch (err) {
                 console.error("Fetch comments error:", err);
@@ -199,7 +201,8 @@ const Post = ({ profile, item, personalData, onRepost }) => {
                 return;
             }
             
-            const url = `http://localhost:5173/profile/${userId}/activities/${postId}`;
+            // const url = `http://localhost:5173/profile/${userId}/activities/${postId}`;
+            const url = `https://global-connect05.netlify.app/profile/${userId}/activities/${postId}`;
             await navigator.clipboard.writeText(url);
             toast.success('Copied to clipboard!');
         } catch (err) {

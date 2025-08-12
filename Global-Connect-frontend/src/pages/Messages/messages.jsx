@@ -66,7 +66,8 @@ const Messages = () => {
     }, [messages])
     /* Dushyant is again started updating from here  */
     const fetchMessages = async () => {
-        await axios.get(`http://localhost:4000/api/message/${activeConvId}`,{ withCredentials: true }).then(res => {
+        // await axios.get(`http://localhost:4000/api/message/${activeConvId}`,{ withCredentials: true }).then(res => {
+        await axios.get(`https://global-connect-05.onrender.com/api/message/${activeConvId}`,{ withCredentials: true }).then(res => {
             console.log(res)
             setMessages(res.data.message)
         }).catch(err => {
@@ -78,7 +79,8 @@ const Messages = () => {
 
     /* Dushyant is updating from here again   */
     const fetchConversationOnLoad = async () => {
-        await axios.get('http://localhost:4000/api/conversation/get-conversation', { withCredentials: true }).then(res => {
+        // await axios.get('http://localhost:4000/api/conversation/get-conversation', { withCredentials: true }).then(res => {
+        await axios.get('https://global-connect-05.onrender.com/api/conversation/get-conversation', { withCredentials: true }).then(res => {
             setConversations(res.data.conversations)
             setActiveConvId(res.data?.conversations[0]?._id)
             socket.emit("joinConversation",res.data?.conversations[0]?._id)
@@ -116,7 +118,8 @@ const Messages = () => {
 
        /*Dushyant is updating again from  here  */
     const handleSendMessaeg = async () => {
-        await axios.post(`http://localhost:4000/api/message`, { conversation: activeConvId, message: messageText, picture: imageLink }, { withCredentials: true }).then(res => {
+        // await axios.post(`http://localhost:4000/api/message`, { conversation: activeConvId, message: messageText, picture: imageLink }, { withCredentials: true }).then(res => {
+        await axios.post(`https://global-connect-05.onrender.com/api/message`, { conversation: activeConvId, message: messageText, picture: imageLink }, { withCredentials: true }).then(res => {
         
             socket.emit("sendMessage", activeConvId, res.data)
             setMessageText("")

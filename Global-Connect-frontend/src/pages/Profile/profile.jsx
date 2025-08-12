@@ -549,9 +549,10 @@ const Profile = () => {
     const fetchDataOnLoad = async () => {
         try {
             const [userDatas, postDatas, ownDatas] = await Promise.all([
-                axios.get(`http://localhost:4000/api/auth/user/${id}`),
-                axios.get(`http://localhost:4000/api/post/getTop5Post/${id}`),
-                axios.get('http://localhost:4000/api/auth/self', { withCredentials: true })
+                // axios.get(`http://localhost:4000/api/auth/user/${id}`),
+                axios.get(`https://global-connect-05.onrender.com/api/auth/user/${id}`),
+                axios.get(`https://global-connect-05.onrender.com/api/post/getTop5Post/${id}`),
+                axios.get('https://global-connect-05.onrender.com/api/auth/self', { withCredentials: true })
             ]);
 
             setUserData(userDatas.data.user);
@@ -599,7 +600,7 @@ const Profile = () => {
     }
 
     const handleEditFunc = async (data) => {
-        await axios.put(`http://localhost:4000/api/auth/update`, { user: data }, { withCredentials: true }).then(res => {
+        await axios.put(`https://global-connect-05.onrender.com/api/auth/update`, { user: data }, { withCredentials: true }).then(res => {
             window.location.reload();
         }).catch(err => {
             console.log(err)
@@ -641,7 +642,7 @@ const Profile = () => {
         if (checkFriendStatus() === "Request Sent") return;
 
         if (checkFriendStatus() === "Connect") {
-            await axios.post('http://localhost:4000/api/auth/sendFriendReq', { reciever: userData?._id }, { withCredentials: true }).then(res => {
+            await axios.post('https://global-connect-05.onrender.com/api/auth/sendFriendReq', { reciever: userData?._id }, { withCredentials: true }).then(res => {
                 toast.success(res.data.message);
                 setTimeout(() => {
                     window.location.reload();
@@ -652,7 +653,7 @@ const Profile = () => {
                 toast.error(err?.response?.data?.error)
             })
         } else if (checkFriendStatus() === "Approve Request") {
-            await axios.post('http://localhost:4000/api/auth/acceptFriendRequest', { friendId: userData?._id }, { withCredentials: true }).then(res => {
+            await axios.post('https://global-connect-05.onrender.com/api/auth/acceptFriendRequest', { friendId: userData?._id }, { withCredentials: true }).then(res => {
                 toast.success(res.data.message);
                 setTimeout(() => {
                     window.location.reload();
@@ -663,7 +664,8 @@ const Profile = () => {
                 toast.error(err?.response?.data?.error)
             })
         } else {
-            await axios.delete(`http://localhost:4000/api/auth/removeFromFriendList/${userData?._id}`, { withCredentials: true }).then(res => {
+            // await axios.delete(`http://localhost:4000/api/auth/removeFromFriendList/${userData?._id}`, { withCredentials: true }).then(res => {
+            await axios.delete(`https://global-connect-05.onrender.com/api/auth/removeFromFriendList/${userData?._id}`, { withCredentials: true }).then(res => {
                 toast.success(res.data.message);
                 setTimeout(() => {
                     window.location.reload();
@@ -677,7 +679,8 @@ const Profile = () => {
     }
 
     const handleLogout = async () => {
-        await axios.post('http://localhost:4000/api/auth/logout', {}, { withCredentials: true }).then(res => {
+        // await axios.post('http://localhost:4000/api/auth/logout', {}, { withCredentials: true }).then(res => {
+        await axios.post('https://global-connect-05.onrender.com/api/auth/logout', {}, { withCredentials: true }).then(res => {
             toast.success(res.data.message);
             localStorage.clear();
             setTimeout(() => {
@@ -693,7 +696,8 @@ const Profile = () => {
 
     const copyToClipboard = async () => {
         try {
-            let string = `http://localhost:5173/profile/${id}`
+            // let string = `http://localhost:5173/profile/${id}`// replace by frontend link
+            let string = `https://global-connect05.netlify.app/profile/${id}`
             await navigator.clipboard.writeText(string);
             toast.success('Copied to clipboard!');
         } catch (err) {

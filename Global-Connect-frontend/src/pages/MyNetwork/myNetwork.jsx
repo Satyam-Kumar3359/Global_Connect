@@ -15,7 +15,8 @@ const MyNetwork = () => {
     }
 
     const fetchFriendList = async () => {
-        await axios.get('http://localhost:4000/api/auth/friendsList', { withCredentials: true }).then((res) => {
+        // await axios.get('http://localhost:4000/api/auth/friendsList', { withCredentials: true }).then((res) => {
+        await axios.get('https://global-connect-05.onrender.com/api/auth/friendsList', { withCredentials: true }).then((res) => {
             console.log(res);
             setData(res.data.friends)
             
@@ -26,7 +27,8 @@ const MyNetwork = () => {
     }
 
     const fetchPendingRequest = async () => {
-        await axios.get('http://localhost:4000/api/auth/pendingFriendsList', { withCredentials: true }).then((res) => {
+        // await axios.get('http://localhost:4000/api/auth/pendingFriendsList', { withCredentials: true }).then((res) => {
+        await axios.get('https://global-connect-05.onrender.com/api/auth/pendingFriendsList', { withCredentials: true }).then((res) => {
             console.log(res);
             setData(res.data.pendingFriends)
         }).catch(err => {
