@@ -13,10 +13,16 @@ const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-  credentials: true,
-  origin: 'http://localhost:5173'
+// app.use(cors({
+//   credentials: true,
+//   origin: 'http://localhost:5173'
   
+// }));
+//++++++++++for backend deploy
+app.use(cors({
+  origin: "https://global-connect05.netlify.app/", // Your frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
 }));
 
 const UserRoutes = require('./routes/user');
