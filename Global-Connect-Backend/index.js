@@ -20,7 +20,7 @@ app.use(cookieParser());
 // }));
 //++++++++++for backend deploy
 app.use(cors({
-  origin: "https://global-connect05.netlify.app/", // Your frontend URL
+  origin: "https://global-connect05.netlify.app", // Your frontend URL
   // methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
