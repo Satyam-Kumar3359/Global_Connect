@@ -18,8 +18,9 @@
 import { io } from "socket.io-client";
 
 const socket = io('https://global-connect-05.onrender.com', {
-  withCredentials: true,
-  transports: ['websocket']
+    transports: ['websocket'],
+    withCredentials: true
 });
 
 export default socket;
+
