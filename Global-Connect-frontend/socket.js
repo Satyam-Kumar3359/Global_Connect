@@ -13,12 +13,13 @@
 //   withCredentials: true
 // });
 
+
 // export default socket;
 import { io } from "socket.io-client";
 
-// Use Render backend URL instead of localhost
 const socket = io('https://global-connect-05.onrender.com', {
-  withCredentials: true
+  withCredentials: true,
+  transports: ['websocket']
 });
 
 export default socket;
