@@ -774,6 +774,7 @@ const Profile = () => {
                         <Card padding={1}>
                             <div className='flex justify-between items-center'>
                                 <div className='text-xl'>Skills</div>
+                                {userData?._id === ownData?._id && <div onClick={handleAboutModal} className='cursor-pointer'><EditIcon /></div>}
                             </div>
                             <div className='text-gray-700 text-md my-2 w-full flex gap-4 flex-wrap'>
                                 {

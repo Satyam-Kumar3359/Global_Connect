@@ -14,8 +14,8 @@ const PostSchema = new mongoose.Schema({
     },
     likes: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'user',
+            type: mongoose.Schema.Types.ObjectId,/// Stores the _id of another document
+            ref: 'user',/// Tells Mongoose which model this ObjectId relates to
         }
     ],
     comments: {
