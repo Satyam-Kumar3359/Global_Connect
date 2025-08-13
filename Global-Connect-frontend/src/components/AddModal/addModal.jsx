@@ -33,7 +33,7 @@ const AddModal = (props) => {
         try {
             const response = await axios.post("https://api.cloudinary.com/v1_1/dxpjl64r4/image/upload", data)
 
-            const imageUrl = response.data.url;
+            const imageUrl = response.data.secure_url;
             setImageUrl(imageUrl)
         } catch (err) {
             console.log(err)
