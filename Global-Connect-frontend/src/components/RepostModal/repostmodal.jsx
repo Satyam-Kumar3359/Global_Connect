@@ -73,10 +73,10 @@ const RepostModal = ({ isOpen, onClose, post, personalData, onRepost }) => {
                 {/* Your profile info */}
                 <div className="flex items-center gap-3 mb-4">
                     <img 
-                        src={personalData?.profilePic || '/default-profile.jpeg'} 
+                        src={personalData?.profilePic || '/images/default-profile.jpeg'} 
                         alt={personalData?.f_name || 'You'}
                         className="w-12 h-12 rounded-full border-2 border-gray-200"
-                        onError={(e) => { e.target.src = '/default-profile.jpeg' }}
+                        onError={(e) => { e.target.src = '/images/default-profile.jpeg' }}
                     />
                     <div>
                         <div className="font-medium">{personalData?.f_name || 'You'}</div>
@@ -105,10 +105,10 @@ const RepostModal = ({ isOpen, onClose, post, personalData, onRepost }) => {
                     <Card padding={1}>
                         <div className="flex items-center gap-3 mb-3">
                             <img 
-                                src={post.user?.profilePic || '/default-profile.jpeg'} 
+                                src={post.user?.profilePic || '/images/default-profile.jpeg'} 
                                 alt={post.user?.f_name || 'User'}
                                 className="w-10 h-10 rounded-full"
-                                onError={(e) => { e.target.src = '/default-profile.jpeg' }}
+                                onError={(e) => { e.target.src = '/images/default-profile.jpeg' }}
                             />
                             <div>
                                 <div className="font-medium text-sm">{post.user?.f_name || 'Unknown User'}</div>

@@ -449,9 +449,9 @@ const Feeds = () => {
           <Card padding={1}>
             <div className='flex gap-3 items-center'>
               <img
-                src={personalData?.profilePic || '/default-profile.jpeg'}
+                src={personalData?.profilePic || '/images/default-profile.jpeg'}
                 className='rounded-4xl border-2 h-13 w-13 border-white cursor-pointer'
-                onError={(e) => { e.target.src = '/default-profile.jpeg' }}
+                onError={(e) => { e.target.src = '/images/default-profile.jpeg' }}
               />
               <div onClick={() => setAddPostModal(true)} className='w-full border-1 py-3 px-3 rounded-3xl cursor-pointer hover:bg-gray-100'>Start a post</div>
             </div>

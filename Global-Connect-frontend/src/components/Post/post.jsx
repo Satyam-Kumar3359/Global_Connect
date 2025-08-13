@@ -225,7 +225,7 @@ const Post = ({ profile, item, personalData, onRepost }) => {
         return {
             _id: 'unknown',
             f_name: 'Unknown User',
-            profilePic: '/default-profile.jpeg',
+            profilePic: '/images/default-profile.jpeg',
             headline: ''
         };
     };
@@ -264,9 +264,9 @@ const Post = ({ profile, item, personalData, onRepost }) => {
                         <Link to={`/profile/${displayUser._id}`} className='w-12 h-12 rounded-4xl'>
                             <img 
                                 className='rounded-4xl w-12 h-12 border-2 border-white cursor-pointer' 
-                                src={displayUser.profilePic || '/default-profile.jpeg'} 
+                                src={displayUser.profilePic || '/images/default-profile.jpeg'} 
                                 alt={displayUser.f_name || 'User'}
-                                onError={(e) => { e.target.src = '/default-profile.jpeg' }}
+                                onError={(e) => { e.target.src = '/images/default-profile.jpeg' }}
                             />
                         </Link>
                         <div>
@@ -411,10 +411,10 @@ const Post = ({ profile, item, personalData, onRepost }) => {
                     <div className='p-4 w-full border-t-1 border-gray-200'>
                         <div className='flex gap-2 items-center mb-4'>
                             <img 
-                                src={personalData?.profilePic || '/default-profile.jpeg'} 
+                                src={personalData?.profilePic || '/images/default-profile.jpeg'} 
                                 className='rounded-full w-12 h-12 border-2 border-white cursor-pointer' 
                                 alt="Your avatar"
-                                onError={(e) => { e.target.src = '/default-profile.jpeg' }}
+                                onError={(e) => { e.target.src = '/images/default-profile.jpeg' }}
                             />
 
                             <form className="w-full flex gap-2" onSubmit={handleSendComment}>
@@ -443,10 +443,10 @@ const Post = ({ profile, item, personalData, onRepost }) => {
                                     <div key={commentItem._id || index} className='my-4'>
                                         <Link to={`/profile/${commentItem?.user?._id}`} className='flex gap-3'>
                                             <img 
-                                                src={commentItem?.user?.profilePic || '/default-profile.jpeg'} 
+                                                src={commentItem?.user?.profilePic || '/images/default-profile.jpeg'} 
                                                 className='rounded-full w-10 h-10 border-white cursor-pointer' 
                                                 alt={commentItem?.user?.f_name || 'User'}
-                                                onError={(e) => { e.target.src = '/default-profile.jpeg' }}
+                                                onError={(e) => { e.target.src = '/images/default-profile.jpeg' }}
                                             />
                                             <div className='cursor-pointer'>
                                                 <div className="text-md font-medium">
