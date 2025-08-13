@@ -138,19 +138,19 @@ app.use(express.json());
 app.use(cookieParser());
 
 // CORS for API routes
-// app.use(cors({
-//   origin: "https://global-connect05.netlify.app", // Deployed frontend
-//   credentials: true
-// }));
-// const cors = require('cors');
-
 app.use(cors({
-  origin: [
-    'https://global-connect05.netlify.app', // your Netlify frontend
-    'http://localhost:5173'                 // local dev
-  ],
+  origin: "https://global-connect05.netlify.app", // Deployed frontend
   credentials: true
 }));
+// const cors = require('cors');
+
+// app.use(cors({
+//   origin: [
+//     'https://global-connect05.netlify.app', // your Netlify frontend
+//     'http://localhost:5173'                 // local dev
+//   ],
+//   credentials: true
+// }));
 
 
 // Routes
