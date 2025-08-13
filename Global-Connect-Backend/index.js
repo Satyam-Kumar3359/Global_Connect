@@ -141,10 +141,11 @@ app.use(cookieParser());
 //   origin: "https://global-connect05.netlify.app", // Deployed frontend
 //   credentials: true
 // }));
-app.options("*", cors({
-  origin: "https://global-connect05.netlify.app",
-  credentials: true
-}));
+
+// app.options("*", cors({
+//   origin: "https://global-connect05.netlify.app",
+//   credentials: true
+// }));
 
 
 app.use(cors({
@@ -152,8 +153,6 @@ app.use(cors({
     'https://global-connect05.netlify.app', // your Netlify frontend
     'http://localhost:5173'                 // local dev
   ],
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
 
