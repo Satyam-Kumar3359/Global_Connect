@@ -247,60 +247,6 @@ const Feeds = () => {
     return true;
   };
 
-  // const fetchData = async () => {
-  //   try {
-  //     setLoading(true);
-
-  //     console.log('🔄 Starting data fetch...');
-
-  //     const [userData, postData] = await Promise.all([
-  //       axios.get('http://localhost:4000/api/auth/self', { withCredentials: true }),
-  //       axios.get('http://localhost:4000/api/post/getAllPost')
-  //     ]);
-
-  //     console.log('✅ Raw API responses received');
-  //     console.log('User data:', userData.data.user);
-  //     console.log('Posts data:', postData.data.posts);
-
-  //     setPersonalData(userData.data.user);
-  //     localStorage.setItem('userInfo', JSON.stringify(userData.data.user));
-
-  //     // ✅ Filter and validate posts before setting state
-  //     const rawPosts = postData.data.posts || [];
-  //     const validPosts = rawPosts.filter(validatePostData);
-
-  //     console.log(`📊 Post validation results:`);
-  //     console.log(`- Raw posts: ${rawPosts.length}`);
-  //     console.log(`- Valid posts: ${validPosts.length}`);
-  //     console.log(`- Invalid posts: ${rawPosts.length - validPosts.length}`);
-
-  //     setPost(validPosts);
-
-  //     if (rawPosts.length !== validPosts.length) {
-  //       toast.warning(`Some posts couldn't be loaded due to missing data`);
-  //     }
-
-  //   } catch (err) {
-  //     console.error('❌ Fetch Error:', err);
-
-  //     // ✅ Better error handling
-  //     if (err.response?.status === 401) {
-  //       toast.error('Session expired. Please login again.');
-  //       // Redirect to login
-  //     } else if (err.response?.status >= 500) {
-  //       toast.error('Server error. Please try again later.');
-  //     } else {
-  //       toast.error(err?.response?.data?.error || 'Failed to fetch data');
-  //     }
-
-  //     // ✅ Set empty states on error
-  //     setPost([]);
-  //     setPersonalData(null);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
-
   const [profileViews, setProfileViews] = useState(0);
   const [postImpressions, setPostImpressions] = useState(0);
 
@@ -308,11 +254,22 @@ const Feeds = () => {
     try {
       setLoading(true);
 
+      // const [userData, postData] = await Promise.all([
+      //   // axios.get('http://localhost:4000/api/auth/self', { withCredentials: true }),
+      //   axios.get('https://global-connect-05.onrender.com/api/auth/self', { withCredentials: true }),
+      //   axios.get('https://global-connect-05.onrender.com/api/post/getAllPost')
+      // ]);
+      
+      const token = localStorage.getItem("token");
       const [userData, postData] = await Promise.all([
-        // axios.get('http://localhost:4000/api/auth/self', { withCredentials: true }),
-        axios.get('https://global-connect-05.onrender.com/api/auth/self', { withCredentials: true }),
+        axios.get('https://global-connect-05.onrender.com/api/auth/self', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }),
         axios.get('https://global-connect-05.onrender.com/api/post/getAllPost')
       ]);
+
 
       const user = userData.data.user;
       const posts = postData.data.posts;

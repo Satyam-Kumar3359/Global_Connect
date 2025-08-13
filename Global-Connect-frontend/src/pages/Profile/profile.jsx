@@ -548,11 +548,16 @@ const Profile = () => {
 
     const fetchDataOnLoad = async () => {
         try {
+            const token = localStorage.getItem("token"); // Get token from localStorage
             const [userDatas, postDatas, ownDatas] = await Promise.all([
                 // axios.get(`http://localhost:4000/api/auth/user/${id}`),
                 axios.get(`https://global-connect-05.onrender.com/api/auth/user/${id}`),
                 axios.get(`https://global-connect-05.onrender.com/api/post/getTop5Post/${id}`),
-                axios.get('https://global-connect-05.onrender.com/api/auth/self', { withCredentials: true })
+                axios.get('https://global-connect-05.onrender.com/api/auth/self', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
             ]);
 
             setUserData(userDatas.data.user);

@@ -10,8 +10,10 @@ const mongoose = require('mongoose');
 
 const cookieOptions = {
     httpOnly: true,
-    secure: false, // Set to true in production
-    sameSite: 'Lax' // set None in production
+    // secure: false, // Set to true in production
+    secure: true, // Set to true in production
+    // sameSite: 'Lax' // set None in production
+    sameSite: 'None' // set None in production
 
 };
 
