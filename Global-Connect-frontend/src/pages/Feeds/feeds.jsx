@@ -254,14 +254,19 @@ const Feeds = () => {
     try {
       setLoading(true);
 
-      // const [userData, postData] = await Promise.all([
-      //   // axios.get('http://localhost:4000/api/auth/self', { withCredentials: true }),
-      //   axios.get('https://global-connect-05.onrender.com/api/auth/self', { withCredentials: true }),
-      //   axios.get('https://global-connect-05.onrender.com/api/post/getAllPost')
-      // ]);
-
+      // Make sure your backend endpoints are correct and match the deployed backend URLs.
+      // Example for local development:
+      // axios.get('http://localhost:4000/api/auth/self', { withCredentials: true }),
+      // axios.get('http://localhost:4000/api/post/getAllPost')
+      // Example for production:
+      // axios.get('https://global-connect-05.onrender.com/api/auth/self', { withCredentials: true }),
+      // Ensure token is set in localStorage after successful login in your auth flow
       const token = localStorage.getItem("token");
-      console.log(token)
+      if (!token) {
+        toast.error('No authentication token found. Please log in again.');
+        setLoading(false);
+        return;
+      }
       const [userData, postData] = await Promise.all([
         axios.get('https://global-connect-05.onrender.com/api/auth/self', {
           headers: {
