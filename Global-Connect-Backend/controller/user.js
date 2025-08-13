@@ -13,7 +13,8 @@ const cookieOptions = {
     // secure: false, // Set to true in production
     secure: true, // Set to true in production
     // sameSite: 'Lax' // set None in production
-    sameSite: 'None' // set None in production
+    sameSite: 'None', // set None in production
+    maxAge: 7 * 24 * 60 * 60 * 1000
 
 };
 
@@ -52,9 +53,10 @@ exports.login = async (req, res) => {
         }
 
         if (userExist && await bcryptjs.compare(password, userExist.password)) {
-            let token =jwt.sign({userId:userExist._id},process.env.JWT_PRIVATE_KEY)
+            // let token =jwt.sign({userId:userExist._id},process.env.JWT_PRIVATE_KEY)
+            let token =jwt.sign({userId:userExist._id},process.env.JWT_PRIVATE_KEY,{ expiresIn: "7d" })
            
-            res.cookie('token',token,cookieOptions) 
+            res.cookie('token',token,cookieOptions ) 
             return res.json({message:'Logged In Successfully',success:"true",userExist,token})
            
         } else {
@@ -91,9 +93,12 @@ exports.loginThroghGmail = async (req, res) => {
         }
         
 
-        let jwttoken = jwt.sign({ userId: userExist._id }, process.env.JWT_PRIVATE_KEY);
-        res.cookie('token', jwttoken, cookieOptions);
-        return res.status(200).json({userExist,jwttoken });
+        // let jwttoken = jwt.sign({ userId: userExist._id }, process.env.JWT_PRIVATE_KEY);
+        // res.cookie('token', jwttoken, cookieOptions);
+        // return res.status(200).json({userExist,jwttoken });
+        token = jwt.sign({ userId: userExist._id }, process.env.JWT_PRIVATE_KEY,{ expiresIn: "7d" });
+        res.cookie('token', token, cookieOptions);
+        return res.status(200).json({userExist,token });
 
     } catch (err) {
         console.error(err);
@@ -143,7 +148,7 @@ exports.getProfileById = async (req, res) => {
 }
 
 exports.logout = async (req, res) => {
-    res.clearCookie('token', cookieOptions).json({ message: 'Logged out successfully' });
+    res.clearCookie('token', cookieOptions,maxAge= 0).json({ message: 'Logged out successfully' });
 }
 
 exports.findUser = async (req, res) => {
