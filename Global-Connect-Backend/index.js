@@ -117,7 +117,8 @@
 // });
 
 
-//+++++++++++defaultconst express = require('express');
+//+++++++++++default
+const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
@@ -141,12 +142,7 @@ app.use(cookieParser());
 //   origin: "https://global-connect05.netlify.app", // Deployed frontend
 //   credentials: true
 // }));
-
-// app.options("*", cors({
-//   origin: "https://global-connect05.netlify.app",
-//   credentials: true
-// }));
-
+// const cors = require('cors');
 
 app.use(cors({
   origin: [

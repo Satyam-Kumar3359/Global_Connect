@@ -19,10 +19,13 @@ const Login = (props) => {
         }
         // await axios.post('http://localhost:4000/api/auth/login',loginField,{withCredentials:true}).then((res) => {
         await axios.post('https://global-connect-05.onrender.com/api/auth/login',loginField,{withCredentials:true}).then((res) => {
+            // console.log(res.data.token,"User: ", res.data.userExist);
+        
            props.changeLoginValue(true);
            localStorage.setItem('isLogin', 'true');
            localStorage.setItem("userInfo", JSON.stringify(res.data.userExist));
            localStorage.setItem("token", res.data.token); // ✅ Store token here
+
            navigate('/feeds');
 
         }).catch(err => {

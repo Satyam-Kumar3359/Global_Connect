@@ -259,8 +259,9 @@ const Feeds = () => {
       //   axios.get('https://global-connect-05.onrender.com/api/auth/self', { withCredentials: true }),
       //   axios.get('https://global-connect-05.onrender.com/api/post/getAllPost')
       // ]);
-      
+
       const token = localStorage.getItem("token");
+      console.log(token)
       const [userData, postData] = await Promise.all([
         axios.get('https://global-connect-05.onrender.com/api/auth/self', {
           headers: {
