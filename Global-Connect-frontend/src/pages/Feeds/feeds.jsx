@@ -271,7 +271,8 @@ const Feeds = () => {
         axios.get('https://global-connect-05.onrender.com/api/auth/self', {
           headers: {
             Authorization: `Bearer ${token}`
-          }
+          },
+          withCredentials: true
         }),
         axios.get('https://global-connect-05.onrender.com/api/post/getAllPost')
       ]);
