@@ -554,9 +554,10 @@ const Profile = () => {
                 axios.get(`https://global-connect-05.onrender.com/api/auth/user/${id}`),
                 axios.get(`https://global-connect-05.onrender.com/api/post/getTop5Post/${id}`),
                 axios.get('https://global-connect-05.onrender.com/api/auth/self', {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
+                // headers: {
+                //     Authorization: `Bearer ${token}`
+                // }
+                withCredentials:true
             })
             ]);
 
